@@ -21,21 +21,21 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-var mysql = require('mysql');
+// var mysql = require('mysql');
    
-var con = mysql.createConnection({
-  host: "localhost",
-  port: 8889,
-  user: "root",
-  password: "root",
-  database: "soupx_db",
-  socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock"
-//   insecureAuth : true
-});
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-});
+// var con = mysql.createConnection({
+//   host: "localhost",
+//   port: 8889,
+//   user: "root",
+//   password: "root",
+//   database: "soupx_db",
+//   socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock"
+// //   insecureAuth : true
+// });
+// con.connect(function(err) {
+//   if (err) throw err;
+//   console.log("Connected!");
+// });
 
 
 
