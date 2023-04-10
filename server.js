@@ -6,9 +6,10 @@ var bodyParser = require('body-parser');
 
 var cors = require('cors');
 var path = require('path');
-var port = 3503;
+var port = 3504;
 
 var Razorpay = require('razorpay');
+const { response } = require('express');
 
 let instance = new Razorpay({
     key_id:"rzp_test_4wIWvYrxDrtp8s",
@@ -124,7 +125,8 @@ app.get('/payment', function (req, res) {
 
 app.get('/subscription', function (req, res) {
      
-    res.render(path.join(__dirname+'/soupx/subscription.ejs'))
+    // res.render(path.join(__dirname+'/soupx/subscription.ejs'))
+    response.redirect("https://subscription.soupx.in/")
     
 });
 
