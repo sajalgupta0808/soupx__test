@@ -1,0 +1,16 @@
+{
+    "name": "SoupX",
+    "short_name": "SoupX",
+    "description": "Progressive Web App to order Soup from Soupx.",
+    "icons": [
+      {
+        "src": "/img/soupxlogo-transparent.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "/",
+    "display": "fullscreen",
+    "theme_color": "#0d4f09",
+    "background_color": "#ffff"
+  }

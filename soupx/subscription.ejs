@@ -1,0 +1,837 @@
+<% include partials/header %> 
+<% include partials/all_menu %>
+<head>
+    <meta charset="utf-8">
+    <title>Begin Your Subscription</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome-all.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/colors/switch.css">
+    <!-- Color Alternatives -->
+    <link href="assets/css/colors/color-2.css" rel="alternate stylesheet" type="text/css" title="color-2">
+    <link href="assets/css/colors/color-3.css" rel="alternate stylesheet" type="text/css" title="color-3">
+    <link href="assets/css/colors/color-4.css" rel="alternate stylesheet" type="text/css" title="color-4">
+    <link href="assets/css/colors/color-5.css" rel="alternate stylesheet" type="text/css" title="color-5">
+
+</head>
+
+<body>
+
+    <!-- This code is use for color chooser, you can delete -->
+   
+
+
+    <div class="wrapper wizard d-flex clearfix multisteps-form position-relative">
+        <div style="background-color:#000000;" class="steps order-2 position-relative w-25">
+            <div style="background-color:#000000;" class="multisteps-form__progress">
+                <span class="multisteps-form__progress-btn js-active" title="Application data"><i class="far fa-user"></i><span>Goal</span></span>
+                <span class="multisteps-form__progress-btn" title="Tax residency"><i style="color:#B0B0B0;" class="far fa-user"></i><span>Meal Plan</span></span>
+                <span class="multisteps-form__progress-btn" title="Indentity documents"><i style="color:#B0B0B0;" class="far fa-user"></i><span>Personal Details</span></span>
+                <span class="multisteps-form__progress-btn" title="Investability"><i style="color:#B0B0B0;" class="far fa-user"></i><span>Checkout & Pay</span></span>
+                <!-- <span class="multisteps-form__progress-btn" title="Review"><i style="color:#B0B0B0;" class="far fa-user"></i><span>Review & Pay</span></span> -->
+            </div>
+        </div>
+        <form class="multisteps-form__form w-75 order-1" action="#" id="wizard">
+            <div class="form-area position-relative">
+                <!-- div 1 -->
+                <div class="multisteps-form__panel js-active" data-animation="slideHorz">
+                    <div class="wizard-forms">
+                        <div class="inner pb-100 clearfix">
+                            <div class="wizard-title text-center">
+                                <!-- <h3>Please, enter your personal information</h3> -->
+                                <p>How it works?</p>
+                               
+
+                                <div class="row no-gutters pb-1">
+                                    <div class="col-md-4">
+                                        <div class="form-group custom-blocks" style="border-radius: 6px; padding: 22px; width: 20%; float: left; border-style: solid;">
+                                            <div >													
+                                                <img id="profile-image" src="icons/contact-form.png" alt="your image" width="20px" height="20px" style="float: left;" />
+                                            </div>
+                                            <div>
+                                                <p style="text-align: center; float: left; font-size: small;">Fill the form</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group custom-blocks" style="border-radius: 6px; padding: 22px; width: 80%; float: left; border-style: solid;" onclick="setGoal('Healthy Eating', 'healthyEat')">
+                                            <div class="row">													
+                                                <a id="healthyEat" style="font-size: 22px; text-align: center;" ><object data="icons/salad.png" height="70px" onclick="setGoal('Healthy Eating', 'healthyEat')"></object></a>
+                                            </div>
+                                            <div>
+                                                <center style="text-align: center;">Healthy Eating</center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group custom-blocks" style="border-radius: 6px; padding: 22px; width: 80%; float: left; border-style: solid;" onclick="setGoal('Muscle Gain', 'muscleG')">
+                                            <div class="row">													
+                                                <a id="muscleG" style="font-size: 22px; text-align: center;" ><object data="icons/muscles.png" height="70px" onclick="setGoal('Muscle Gain', 'muscleG')"></object></a>
+                                            </div>
+                                            <div>
+                                                <center style="text-align: center;">Muscle Gain</center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>				
+                                
+                                
+                            </div>
+                            <div class="wizard-photo-area">
+                                <div class="wizard-photo-upload position-relative">
+                                    <!-- <label for="files">Upload Image</label> -->
+                                    <input id="files" type='file' onchange="readURL(this);" style="display: none;">
+                                    <div class="display-img text-center">
+                                        <a href="https://soupx.in/">
+                                            <img id="profile-image" src="assets/img/soupxlogo-transparent.png" alt="your image" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wizard-form-field mb-85">
+                                <!-- <div class="wizard-form-input">
+                                    <label>Name</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="wizard-form-input">
+                                    <label>Email</label>
+                                    <input type="email" name="email" id="email">
+                                </div>
+                                <div class="wizard-form-input">
+                                    <label>Phone</label>
+                                    <input type="text" name="phone" id="phone" required>
+                                </div>
+                                <div class="wizard-form-input mb-60 mt-60">
+                                    <div class="line"></div>
+                                </div> -->
+                                <span class="wizard-sub-text" style="margin-bottom: 20px;">Please select your goal</span>
+                                <div class="row no-gutters pb-1">
+                                    <div class="col-md-4">
+                                        <div class="form-group custom-blocks" style="border-radius: 6px; padding: 22px; width: 80%; float: left; border-style: solid;" onclick="setGoal('Loose Weight', 'looseW')">
+                                            <div class="row">													
+                                                <a id="looseW" style="font-size: 22px; text-align: center;" ><object data="icons/weight-loss.png" height="70px" onclick="setGoal('Loose Weight', 'looseW')"></object></a>
+                                            </div>
+                                            <div>
+                                                <center style="text-align: center;">Lose Weight</center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group custom-blocks" style="border-radius: 6px; padding: 22px; width: 80%; float: left; border-style: solid;" onclick="setGoal('Healthy Eating', 'healthyEat')">
+                                            <div class="row">													
+                                                <a id="healthyEat" style="font-size: 22px; text-align: center;" ><object data="icons/salad.png" height="70px" onclick="setGoal('Healthy Eating', 'healthyEat')"></object></a>
+                                            </div>
+                                            <div>
+                                                <center style="text-align: center;">Healthy Eating</center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group custom-blocks" style="border-radius: 6px; padding: 22px; width: 80%; float: left; border-style: solid;" onclick="setGoal('Muscle Gain', 'muscleG')">
+                                            <div class="row">													
+                                                <a id="muscleG" style="font-size: 22px; text-align: center;" ><object data="icons/muscles.png" height="70px" onclick="setGoal('Muscle Gain', 'muscleG')"></object></a>
+                                            </div>
+                                            <div>
+                                                <center style="text-align: center;">Muscle Gain</center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>									
+                                <div class="row no-gutters pb-1">
+                                    <div class="col-md-4">
+                                        <div class="form-group custom-blocks" style="border-radius: 6px; padding: 22px; width: 80%; float: left; border-style: solid;" onclick="setGoal('Detox', 'detox')">
+                                            <div class="row">													
+                                                <a id="detox" style="font-size: 22px; text-align: center;" ><object data="icons/detox.png" height="70px" onclick="setGoal('Detox', 'detox')"></object></a>
+                                            </div>
+                                            <div>
+                                                <center style="text-align: center;">Detox</center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group custom-blocks" style="border-radius: 6px; padding: 22px; width: 80%; float: left; border-style: solid;" onclick="setGoal('Light Dinner', 'lightD')">
+                                            <div class="row">													
+                                                <a id="lightD" style="font-size: 22px; text-align: center;" ><object data="icons/bowl-of-soup.png" height="70px" onclick="setGoal('Light Dinner', 'lightD')"></object></a>
+                                            </div>
+                                            <div>
+                                                <center style="text-align: center;">Light Dinner</center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group custom-blocks" style="border-radius: 6px; padding: 22px; width: 80%; height: 100%;float: left; border-style: solid;" onclick="setGoal('Not Sure', 'notS')">
+                                            <div class="row">													
+                                                <a id="notS" style="font-size: 15px; text-align: center; font-size: 20px; font-weight: 800;"  onclick="setGoal('Not Sure', 'notS')">Not sure?</a>
+                                            </div>
+                                            <!-- <div class="row">&nbsp;</div> -->
+                                            <div>
+                                                <center style="text-align: center; font-size: 15.6px;">Let our nutritionist decide.</center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>									
+                                <span class="wizard-sub-text" style="margin-bottom: 20px; margin-top: 35px;">Your Food Preferences (Can choose multiple)</span>
+                                <div class="row no-gutters pb-1">
+										<div class="col-6 pr-2">
+											<div class="form-group custom-blocks" style="border-radius: 6px; padding: 22px; width: 80%; float: left; border-style: solid;" onclick="setFoodPreference('Veg', 'veg')">
+												<div class="row">													
+													<a id="veg" style="font-size: 22px; margin-left: 26%;" ><img src="icons/vegetables.png" style="max-width: 36% !important;"/></a>
+												</div>
+												<div>
+													<center style="text-align: center;">Veg</center>
+												</div>
+											</div>
+										</div>
+										<div class="col-6 pr-2">
+											<div class="form-group custom-blocks" style="border-radius: 6px; padding: 22px; width: 80%; float: left; border-style: solid;" onclick="setFoodPreference('Non Veg', 'nonVeg')">
+												<div class="row">													
+													<a id="nonVeg" style="font-size: 22px; margin-left: 26%;" ><img src="icons/roast-chicken.png" style="max-width: 36% !important;"/></a>
+												</div>
+												<div>
+													<center style="text-align: center;">Non Veg</center>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row no-gutters pb-1">
+										<div class="col-6 pr-2">
+											<div class="form-group custom-blocks" style="border-radius: 6px; padding: 22px; width: 80%; float: left; border-style: solid;" onclick="setFoodPreference('Vegan', 'vegan')">
+												<div class="row">													
+													<a id="vegan" style="font-size: 22px; margin-left: 26%;" ><img src="icons/vegan.png" style="max-width: 36% !important;"/></a>
+												</div>
+												<div>
+													<center style="text-align: center;">Vegan</center>
+												</div>
+											</div>
+										</div>
+										<div class="col-6 pr-2">
+											<div class="form-group custom-blocks" style="border-radius: 6px; padding: 22px; width: 80%; float: left; border-style: solid;" onclick="setFoodPreference('Eggs', 'egg')">
+												<div class="row">													
+													<a id="egg" style="font-size: 22px; margin-left: 26%;" ><img src="icons/eggs.png" style="max-width: 36% !important;"/></a>
+												</div>
+												<div>
+													<center style="text-align: center;">Eggs</center>
+												</div>
+											</div>
+										</div>
+									</div>
+                                    <span class="wizard-sub-text" style="margin-bottom: 20px; margin-top: 35px;">Allergens</h4>
+                                    <div class="row no-gutters pb-1">
+										<div class="col-md-4">
+											<div class="form-group custom-blocks" style="border-radius: 6px; padding: 22px; width: 80%; float: left; border-style: solid;" onclick="setAllergens('Nut Free', 'nutFree')">
+												<div class="row">													
+													<a id="nutFree" style="font-size: 22px; text-align: center;" ><object data="icons/nut.png" height="70px" onclick="setAllergens('Nut Free', 'nutFree')"></object></a>
+												</div>
+												<div>
+													<center style="text-align: center;">Nut Free</center>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group custom-blocks" style="border-radius: 6px; padding: 22px; width: 80%; float: left; border-style: solid;" onclick="setAllergens('Gluten Free', 'glutenFree')">
+												<div class="row">													
+													<a id="glutenFree" style="font-size: 22px; text-align: center;" ><object data="icons/gluten-free.png" height="70px" onclick="setAllergens('Gluten Free', 'glutenFree')"></object></a>
+												</div>
+												<div>
+													<center style="text-align: center;">Gluten Free</center>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group custom-blocks" style="border-radius: 6px; padding: 22px; width: 80%; float: left; border-style: solid;" onclick="setAllergens('Not Applicable', 'noAllergen')">
+												<div class="row">													
+													<a id="noAllergen" style="font-size: 22px; text-align: center;" ><object data="icons/not-applicable.png" height="70px" onclick="setAllergens('Not Applicable', 'noAllergen')"></object></a>
+												</div>
+												<div>
+													<center style="text-align: center;">Not Applicable</center>
+												</div>
+											</div>
+										</div>
+									</div>
+                            </div>
+                            <div class="wizard-v3-progress">
+                                <span>1 to 5 step</span>
+                                <h3>0% to complete</h3>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 0%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.inner -->
+                        <div class="vector-img-one">
+                            <img src="assets/img/vb1.png" alt="">
+                        </div>
+                        <div class="actions">
+                            <ul>
+                                <li><span id="next-button-c" class="js-btn-next" title="NEXT">NEXT <i class="fa fa-arrow-right"></i></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- div 2 -->
+                <div class="multisteps-form__panel" data-animation="slideHorz">
+                    <div class="wizard-forms section-padding">
+                        <div class="inner pb-100 clearfix">
+                            <div class="wizard-title text-center">
+                                <h3>YOUR BMI CALCULATOR</h3>
+                                <p>To help our nutritionists curate a customised plan for you.</p>
+                            </div>
+                            <div class="row no-gutters pb-1">
+                                <div class="col-6 pr-2">
+                                    <div class="form-group custom-gender" onclick="setGender('Male', 'male', 'female')">
+                                        <a id="male" style="font-size: 22px; margin-left: 20%;" ><img src="icons/young-man.png" style="max-width: 60% !important;"></a>
+                                    </div>
+                                </div>
+                                <div class="col-6 pl-2">
+                                    
+                                    <div class="form-group custom-gender" style="float: left;" onclick="setGender('Female', 'female', 'male')">
+                                        <a id="female" style="font-size: 22px; margin-left: 21%;"><img src="icons/woman.png" style="max-width: 60% !important;"></a>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="wizard-form-field mb-85">
+                                <div class="wizard-form-input">
+                                    <label>Age</label>
+                                    <input type="number" id="age" name="age" onkeyup="setBMIData()">
+                                </div>
+                                <div class="wizard-form-input">
+                                    <label>Weight (kg)</label>
+                                    <input type="number" step="0.1" name="weight" id="weight" onkeyup="setBMIData()">
+                                </div>
+                                <div class="wizard-form-input">
+                                    <label>Height</label>
+                                    <select id="height" onchange="setBMIData()">
+                                        <option value="">Height</option>
+                                        <option value="4 ft 0 inch">4'0"</option>
+                                        <option value="4 ft 1 inch">4'1"</option>
+                                        <option value="4 ft 2 inch">4'2"</option>
+                                        <option value="4 ft 3 inch">4'3"</option>
+                                        <option value="4 ft 4 inch">4'4"</option>
+                                        <option value="4 ft 6 inch">4'6"</option>
+                                        <option value="4 ft 7 inch">4'7"</option>
+                                        <option value="4 ft 8 inch">4'8"</option>
+                                        <option value="4 ft 9 inch">4'9"</option>
+                                        <option value="4 ft 10 inch">4'10"</option>
+                                        <option value="4 ft 11 inch">4'11"</option>
+                                        <option value="5 ft 0 inch">5'0"</option>
+                                        <option value="5 ft 1 inch">5'1"</option>
+                                        <option value="5 ft 2 inch">5'2"</option>
+                                        <option value="5 ft 3 inch">5'3"</option>
+                                        <option value="5 ft 4 inch">5'4"</option>
+                                        <option value="5 ft 5 inch">5'5"</option>
+                                        <option value="5 ft 6 inch">5'6"</option>
+                                        <option value="5 ft 7 inch">5'7"</option>
+                                        <option value="5 ft 8 inch">5'8"</option>
+                                        <option value="5 ft 9 inch">5'9"</option>
+                                        <option value="5 ft 10 inch">5'10"</option>
+                                        <option value="5 ft 11 inch">5'11"</option>
+                                        <option value="6 ft 0 inch">6'0"</option>
+                                        <option value="6 ft 1 inch">6'1"</option>
+                                        <option value="6 ft 2 inch">6'2"</option>
+                                        <option value="6 ft 3 inch">6'3"</option>
+                                        <option value="6 ft 4 inch">6'4"</option>
+                                        <option value="6 ft 5 inch">6'5"</option>
+                                        <option value="6 ft 6 inch">6'6"</option>
+                                        <option value="6 ft 7 inch">6'7"</option>
+                                        <option value="6 ft 8 inch">6'8"</option>
+                                        <option value="6 ft 9 inch">6'9"</option>
+                                        <option value="6 ft 10 inch">6'10"</option>
+                                        <option value="6 ft 11 inch">6'11"</option>
+                                    </select>
+                                </div>
+                                <div class="wizard-form-input mb-60 mt-60">
+                                    <div class="line"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="wizard-v3-progress">
+                                <span>2 to 5 step</span>
+                                <h3>38% to complete</h3>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 38%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.inner -->
+                        <div class="vector-img-one">
+                            <img src="assets/img/vb2.png" alt="">
+                        </div>
+                        <div class="actions">
+                            <ul>
+                                <li><span class="js-btn-prev" title="BACK"><i class="fa fa-arrow-left"></i> BACK </span></li>
+                                <li><span class="js-btn-next" title="NEXT">NEXT <i class="fa fa-arrow-right"></i></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- div 3 -->
+                <div class="multisteps-form__panel" data-animation="slideHorz">
+                    <div class="wizard-forms">
+                        <div class="inner pb-100 clearfix">
+                            <div class="wizard-title text-center">
+                                <h3>Select your Plan Preference and Schedule</h3>
+                                <p>Your meal will be delivered to your address on your preferred days and time slot.</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card" style="width: 100%; background-color: rgb(117 224 87 / 55%);" id="1stp" onclick="setPlan('Trial 7 Days', '1463', 7, '1stp', '2ndp', '3rdp', '4thp')">
+                                        <div class="card-header">
+                                            <h4>Trial 7 Days</h4>
+                                            <p style="background-color: #0d4f09; color: white; float: right; position: absolute; padding: 1% 3%; margin-left: 70%;top: 4%;">Save 15%</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="custom_row_plan"><tiny>₹</tiny> <h3>209</h3><p>/meal</p></div><br><br>
+                                            <div class="custom_row_plan"><tiny>₹</tiny>&nbsp; 1,463 </div><br>
+                                            <div class="custom_row_plan"><p><i class="icon-hotel-room_service"></i>&nbsp;7 Meals &nbsp;<i class="icon_chat"></i>&nbsp;Personal Nutritionist</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card" style="width: 100%;" id="2ndp" onclick="setPlan('Wellness 14 Days', '2646', 14, '2ndp', '3rdp', '1stp', '4thp')"> 
+                                        <div class="card-header">
+                                            <h4>Wellness 14 Days</h4>
+                                            <p style="background-color: #0d4f09; color: white; float: right; position: absolute; padding: 1% 3%; margin-left: 70%;top: 4%;">Save 25%</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="custom_row_plan"><tiny>₹</tiny> <h3>189</h3><p>/meal</p></div><br><br>
+                                            <div class="custom_row_plan"><tiny>₹</tiny>&nbsp; 2,646</p></div><br>
+                                            <div class="custom_row_plan"><p><i class="icon-hotel-room_service"></i>&nbsp;14 Meals &nbsp;<i class="icon_chat"></i>&nbsp;Personal Nutritionist</p></div>
+                                        </div>											
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">&nbsp;</div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card" style="width: 100%;" id="3rdp" onclick="setPlan('FIT 28 Days', '4732', 28, '3rdp', '1stp', '2ndp', '4thp')"> 
+                                        <div class="card-header">
+                                            <h4>FIT 28 Days</h4>
+                                            <p style="background-color: #0d4f09; color: white; float: right; position: absolute; padding: 1% 3%; margin-left: 70%;top: 4%;">Save 35%</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="custom_row_plan"><tiny>₹</tiny> <h3>169</h3><p>/meal</p></div><br><br>
+                                            <div class="custom_row_plan"><tiny>₹</tiny> &nbsp;4,732</div><br>
+                                            <div class="custom_row_plan"><p><i class="icon-hotel-room_service"></i>&nbsp;28 Meals &nbsp;<i class="icon_chat"></i>&nbsp;Personal Nutritionist</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card" style="width: 100%; min-height: 100%;" id="4thp" onclick="buildCustomPlan()"> 
+                                        <div class="card-header">
+                                            <h4>Custom</h4>
+                                            <select id="customDays" onchange="buildCustomPlan()" style="background-color: #0d4f09; color: white; float: right; position: absolute; padding: 1% 1%; margin-left: 66%;top: 4%;">
+                                            </select>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="custom_row_plan"><tiny>₹</tiny> <h3 id="customPlanCost"></h3><p>/meal</p></div><br><br>
+                                            <div class="custom_row_plan" id="customPlanTotalCost"></div><br>
+                                            <div class="custom_row_plan"><p><i class="icon-hotel-room_service"></i>&nbsp;<p id="noMeals"></p>&nbsp; Meals &nbsp;<i class="icon_chat"></i>&nbsp;Personal Nutritionist</p></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wizard-form-input mb-60 mt-60">
+                                <div class="line line2"></div>
+                            </div>
+                            <div class="wizard-duration mb-60">
+                                <span class="wizard-sub-text">Choose Schedule</span>
+                                <div class="row">
+                                    <div class="col">
+                                        <h5>Start Date</h5>
+                                        <input type="date" class="form-control" id="startDate" onchange="setStartDate()">
+                                    </div>
+                                    <div class="col">
+                                        <h5>Timeslot</h5>
+                                        <select class="form-control required" id="timeslot" onchange="setTimeslot()">
+											<option value="">Timeslot</option>
+											<option value="8:00 AM - 9:00 AM">8:00 AM - 9:00 AM</option>
+											<option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
+											<!-- <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option> -->
+											<option value="11:00 AM - 12:00 AM">11:00 AM - 12:00 AM</option>
+											<option value="12:00 AM - 1:00 PM">12:00 AM - 1:00 PM</option>
+											<option value="1:00 PM - 2:00 PM">1:00 PM - 2:00 PM</option>
+											<option value="2:00 PM - 3:00 PM">2:00 PM - 3:00 PM</option>
+											<option value="3:00 PM - 4:00 PM">3:00 PM - 4:00 PM</option>
+											<option value="4:00 PM - 5:00 PM">4:00 PM - 5:00 PM</option>
+											<option value="5:00 PM - 6:00 PM">5:00 PM - 6:00 PM</option>
+											<option value="6:00 PM - 7:00 PM">6:00 PM - 7:00 PM</option>
+											<option value="7:00 PM - 8:00 PM">7:00 PM - 8:00 PM</option>
+											<option value="8:00 PM - 9:00 PM">8:00 PM - 9:00 PM</option>
+											<option value="9:00 PM - 10:00 PM">9:00 PM - 10:00 PM</option>
+											
+										</select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wizard-checkbox-option">
+                                <h5>Select Days</h5>
+                                <ul>
+                                    <li>
+                                        <label class="block-option">
+                                            <input type="checkbox" class="checked-checkbox" value="Monday" onclick="setDays('Monday')" checked name="options[]">
+                                            <span class="checkbox-tick"></span>
+                                            <span class="day-label">Monday</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="block-option">
+                                            <input type="checkbox" class="checked-checkbox" value="Tuesday" onclick="setDays('Tuesday')" checked name="options[]">
+                                            <span class="checkbox-tick"></span>
+                                            <span class="day-label">Tuesday</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="block-option">
+                                            <input type="checkbox" class="checked-checkbox" value="Wednesday" onclick="setDays('Wednesday')" checked name="options[]">
+                                            <span class="checkbox-tick"></span>
+                                            <span class="day-label">Wednesday</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="block-option">
+                                            <input type="checkbox" class="checked-checkbox" value="Thursday" onclick="setDays('Thursday')" checked name="options[]">
+                                            <span class="checkbox-tick"></span>
+                                            <span class="day-label">Thursday</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="block-option">
+                                            <input type="checkbox" class="checked-checkbox" value="Friday" onclick="setDays('Friday')" checked name="options[]">
+                                            <span class="checkbox-tick"></span>
+                                            <span class="day-label">Friday</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="block-option">
+                                            <input type="checkbox" class="checked-checkbox" value="Saturday" onclick="setDays('Saturday')" checked name="options[]">
+                                            <span class="checkbox-tick"></span>
+                                            <span class="day-label">Saturday</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="block-option">
+                                            <input type="checkbox" class="checked-checkbox" value="Sunday" onclick="setDays('Sunday')" checked name="options[]">
+                                            <span class="checkbox-tick"></span>
+                                            <span class="day-label">Sunday</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--<div class="wizard-document-upload pb-200">
+                                <span class="wizard-sub-text">Upload the documents</span>
+                                <div class="custom-file position-relative">
+                                    <input type="file" class="custom-file-input form-control d-none" id="customFile">
+                                    <label class="custom-file-label" for="customFile">jpg or .pdf should  be more than 500KB or 300PI</label>
+                                </div>
+                            </div>-->
+							<div class="wizard-form-input mb-60 mt-60">
+                                <!-- <div class="line line2"></div> -->
+                            </div>
+                            <div class="wizard-v3-progress">
+                                <span>3 to 5 step</span>
+                                <h3>59% to complete</h3>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 59%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ./inner -->
+                        <div class="vector-img-one">
+                            <img src="assets/img/vb3.png" alt="">
+                        </div>
+                        <div class="actions">
+                            <ul>
+                                <li><span class="js-btn-prev" title="BACK"><i class="fa fa-arrow-left"></i> BACK </span></li>
+                                <li><span class="js-btn-next" title="NEXT">NEXT <i class="fa fa-arrow-right"></i></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- div 4 -->
+                <div class="multisteps-form__panel" data-animation="slideHorz">
+                    <div class="wizard-forms">
+                        <div class="inner pb-200 clearfix">
+                            <div class="wizard-title text-center">
+                                <h3>Full Meal / Add-ons</h3>
+                                <p>Our soups when complemented with healthy sides make a complete meal. Choose to make it a complete meal or just some add-ons.</p>
+                            </div>
+                            <div id="slider-service" class="wizard-service-slide row">
+                                <h4 style="margin-bottom: 35px;">Choice of Soup-sides (Optional)</h4>
+                                <div class="row no-gutters pb-1">
+                                    <div class="col-4">
+                                        <div class="row no-gutters pb-1 custom-floating_disc"><div class="col"><p style="font-size: 17px; font-weight: bold;">₹29</p></div><div class="col" style="margin-left: -25px;">&nbsp;<strike style="font-size: 12px;">₹49</strike></div></div>
+                                        <div class="form-group" style="border-radius: 6px; padding: 22px; width: 100%; float: left; border-style: solid;" onclick="setOptionalItems('Whole Wheat Bread Stick', 29, 'opt1')">
+                                            <div class="row">													
+                                                <a id="opt1" style="font-size: 22px; text-align:center;" ><img src="icons/bread.png" style="width: 40% !important;"/></a>
+                                            </div>
+                                            <div>
+                                                <center style="text-align: center;">Whole Wheat Bread Stick</center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="row no-gutters pb-1 custom-floating_disc"><div class="col"><p style="font-size: 17px; font-weight: bold;">₹29</p></div><div class="col" style="margin-left: -25px;">&nbsp;<strike style="font-size: 12px;">₹49</strike></div></div>
+                                        <div class="form-group" style="border-radius: 6px; padding: 22px; width: 100%; float: left; height:100%; border-style: solid;" onclick="setOptionalItems('Baked Panko Croutons', 29, 'opt2')">
+                                            <div class="row">													
+                                                <a id="opt2" style="font-size: 22px; text-align: center;" ><img src="icons/silhouette.png" style="width: 40% !important;"/></a>
+                                            </div>
+                                            <div>
+                                                <center style="text-align: center;">Baked Panko Croutons</center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                    <div class="row no-gutters pb-1 custom-floating_disc"><div class="col"><p style="font-size: 17px; font-weight: bold;">₹29</p></div><div class="col" style="margin-left: -25px;">&nbsp;<strike style="font-size: 12px;">₹49</strike></div></div>
+                                        <div class="form-group" style="border-radius: 6px; padding: 22px; width: 100%; float: left; border-style: solid;" onclick="setOptionalItems('Whole Wheat Garlic Bread', 29, 'opt3')">
+                                            <div class="row">													
+                                                <a id="opt3" style="font-size: 22px; text-align: center;" ><img src="icons/bread 2.png" style="width: 40% !important;"/></a>
+                                            </div>
+                                            <div>
+                                                <center style="text-align: center;">Whole Wheat Garlic Bread</center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h4 class="main_question" style="margin-top: 30px;">Want to make it a full meal? ₹99&nbsp;(<span><strike>₹199</strike></span>)</h4>
+                                <h6 class="main_question" style="margin-bottom: 20px;">Served with veggie bowl / salads / healthy sandwiches along with soups</h6>
+                                <div class="row no-gutters pb-1">
+                                    <div class="col-6 pr-2">
+                                        <div class="form-group custom-blocks" style="border-radius: 6px; padding: 22px; width: 80%; float: left; border-style: solid;" onclick="setFullMeal('Yes', 'fm1', 'fm2')">
+                                            <div class="row">													
+                                                <a id="fm1" style="font-size: 22px; text-align:center;" onclick="setFullMeal('Yes', 'fm1', 'fm2')">Yes</a>
+                                            </div>
+                                            <!-- <div>
+                                                <center style="text-align: center;">Whole Wheat Bread Stick</center>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-6 pr-2">
+                                        <div class="form-group custom-blocks" style="border-radius: 6px; padding: 22px; width: 80%; float: left; border-style: solid;" onclick="setFullMeal('No', 'fm2', 'fm1')">
+                                            <div class="row">													
+                                                <a id="fm2" style="font-size: 22px; text-align:center;" onclick="setFullMeal('No', 'fm2', 'fm1')">No</a>
+                                            </div>
+                                            <!-- <div>
+                                                <center style="text-align: center;">Whole Wheat Bread Stick</center>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <h4 class="main_question" style="margin-top: 35px; margin-bottom: 20px;">Delivery Address</h4>
+                                
+                                    <div class="wizard-form-input">
+                                        <label>Address Line 1</label>
+                                        <input class="form-control"  type="text" id="address_1" name="address_1">
+                                    </div>
+                                    <div class="wizard-form-input">
+                                        <label>Address Line 2</label>
+                                        <input class="form-control"  type="text" id="address_2" name="address_2">
+                                    </div>
+                                    <div class="wizard-form-input">
+                                        <label>Landmark</label>
+                                        <input class="form-control"  type="text" id="landmark" name="landmark">
+                                    </div>
+                                    <div class="wizard-form-input">
+                                        <label>Pin Code</label>
+                                        <input class="form-control" type="text" id="pincode" name="pincode">
+                                    </div>
+                                    <div>
+                                        <label>City</label>
+                                        <select name="city" class="form-control required" id="city">
+											<option value="Noida">Noida</option>
+											<option value="Delhi">Delhi</option>
+											<option value="Gurgaon">Gurgaon</option>
+										</select>
+                                    </div>
+                                
+                            </div>
+                            <div class="wizard-v3-progress">
+                                <span>4 to 5 step</span>
+                                <h3>79% to complete</h3>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 79%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.inner -->
+                        <div class="vector-img-one">
+                            <img src="assets/img/vb4.png" alt="">
+                        </div>
+                        <div class="actions">
+                            <ul>
+                                <li><span class="js-btn-prev" title="BACK"><i class="fa fa-arrow-left"></i> BACK </span></li>
+                                <li><span class="js-btn-next" title="NEXT">NEXT <i class="fa fa-arrow-right"></i></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- div 5 -->
+                <div class="multisteps-form__panel" data-animation="slideHorz">
+                    <div class="wizard-forms">
+                        <div class="inner pb-100">
+                            <div class="wizard-title text-center">
+                                <h3>Review and Pay</h3>
+                                <p>Once the payment is complete, our nutritionist will call you within 24hrs to curate a plan for you.</p>
+                            </div>
+                            <table class="table">
+                                <tr>
+                                    <th>Goal:</th>
+                                    <td><span id="s_goal"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Preferences:</th>
+                                    <td><span id="s_prefs"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Allergen:</th>
+                                    <td><span id="s_allergen"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Selected Plan:</th>
+                                    <td><span id="s_plan_name"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Plan Price:</th>
+                                    <td><span id="s_plan_price"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Addons:</th>
+                                    <td><span id="s_plan_addons"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Full Meal:</th>
+                                    <td><span id="s_plan_fm"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Validity:</th>
+                                    <td><span id="s_plan_days"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Start Date:</th>
+                                    <td><span id="s_start_date"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Timeslot:</th>
+                                    <td><span id="s_timeslot"></span></td>
+                                </tr>
+                                <tr>
+                                    <th>Selected Days:</th>
+                                    <td><span id="s_days"></span></td>
+                                </tr>
+                            </table>
+                            <!-- <div class="form-group">
+                                <label for="s_plan_name">Selected Plan: </label>
+                                <span id="s_plan_name"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="s_plan_price">Plan Price: </label>
+                                <span id="s_plan_price"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="s_plan_addons">Addons: </label>
+                                <span id="s_plan_addons"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="s_plan_fm">Full Meal: </label>
+                                <span id="s_plan_fm"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="s_plan_days">Validity: </label>
+                                <span id="s_plan_days"></span>
+                            </div> -->
+                            <div class="form-group" style="margin-top: 20px; margin-bottom: 40px;">
+                                <!-- <label for="s_plan_days">Have A Coupon? </label> -->
+                                <div class="row">
+                                    <div class="col-lg-9">
+                                        <input type="text" id="coupon" class="form-control" placeholder="Have A Coupon?">
+                                    </div>
+                                    <div class="col">
+                                        <button class="btn btn-primary" id="apply_coupon">Apply</button>
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-top: 3%; padding-left: 30%;">
+                                    <p id="coupon-error"></p>
+                                </div>
+                                <!-- <i class="icon-phone"></i> -->
+                            </div>
+                            <div class="form-group" style="margin-bottom: 50px;">
+                                <div class="row" style="margin-left: 15%;">
+                                    <div class="col">
+                                        <h5 class="text-danger">Total Amount: </h5>
+                                    </div>
+                                    <div class="col">
+                                        <h5 id="total_amount">0</h5>
+                                    </div>	
+                                </div>
+                            </div>
+                            <div class="wizard-v3-progress">
+                                <span>5 to 5 step</span>
+                                <h3>100% to complete</h3>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 100%">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.inner -->
+                        <div class="vector-img-one position-relative">
+                            <img src="assets/img/vb5.png" alt="">
+                        </div>
+                        <div class="actions mt-60">
+                            <ul>
+                                <li><span class="js-btn-prev" title="BACK"><i class="fa fa-arrow-left"></i> BACK </span></li>
+                                <li><button title="NEXT" id="pay">SUBMIT & PAY<i class="fa fa-arrow-right"></i></button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/slick.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="assets/js/main.js"></script>
+    <!-- <script src="assets/js/custom.js"></script> -->
+    <script src="assets/js/switch.js"></script>
+    <script>
+        jQuery(document).ready(function ($){
+            console.log('asdsadsa');
+            let resp = $.post({
+				url: 'https://shop.soulsara.soulstudio.world/api/v1/login',
+				// url: 'http://localhost:2500/api/v1/login',
+				xhrFields: {
+					withCredentials: true
+				},
+				crossDomain: true,
+				data:{'username': 'admin@soulsara.com', 'password': 'admin'}	
+			});
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#profile-image')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        };
+        $("#customFile").change(function() {
+            filename = this.files[0].name
+        });
+    </script>
+</body>

@@ -1,0 +1,35 @@
+<body>
+	<header class="header clearfix element_to_stick">
+		<div class="container">
+		<div id="logo">
+			<a href="/">
+				<img style="height:80px;" src="img/soupxlogo-transparent.png" alt="">
+				<!-- <img src="img/soupxlogo-transparent.png" alt="" class="logo_sticky"> -->
+			</a>
+		</div>
+		<ul id="top_menu">
+			<% if(!user){ %>
+				<li><a href="#sign-in-dialog" id="sign-in" class="" style="margin-top: 53%;"><img src="images/user-locked.png" style="max-width: 24px;"></a></li>
+			<% } %>
+			<!-- <li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li> -->
+		</ul>
+		
+			<nav class="main-menu">
+			<ul>
+				<li><a href="https://subscription.soupx.in/" style="color: #0d4f09;">Subscription</a></li>
+				<% if(user){ %> 
+				<li class="submenu">
+					<a href="#0" class="show-submenu"><div><img src="img/user-icon.png" alt="" style="width: 24px;"></div></a>
+					<ul>
+						<li><a href="/profile"><%= user.name %></a></li>
+						<li><a href="#" id="logout">Logout</a></li>
+					</ul>
+				</li>
+				<% } %>
+				<li><a href="#" id="shoppingCart"><i class="fa fa-shopping-cart" style="font-size:30px;color:black;"></i><p class="notification-no"></p></a></li>
+			</ul>
+		</nav>
+	</div>
+	</header>
+	<!-- /header -->
+	
