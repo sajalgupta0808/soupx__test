@@ -1,0 +1,76 @@
+<% include partials/header %> 
+<% include partials/all_menu %>
+<style>
+    @media only screen and (max-width: 600px) {
+        #lead{
+            padding: 5px !important;
+        }
+        
+    }
+    .form-control{
+        font-size: 18px !important;
+    }
+</style>
+
+<div class="card" style="padding: 5%; box-shadow: 2px 2px 17px 2px #1b1a1aa6; width: fit-content; margin: auto; margin-top: 20px; margin-bottom: 20px;">
+    <div class="card-body">
+        <div id="step_1">
+            <h4 class="card-text" style="text-align: center;">Please enter your details to continue</h4>
+          <div class="form-group">
+            <form action="/leads" method="POST">
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your phone number (without country code)" onkeypress="return onlyNumberKey(event)" maxlength="11"  required/>
+       
+          </div>
+     
+            <button id="save-lead" class="btn btn-primary" style="font-size: 21px; border: none; background-color: #4caf50; color: white; float: right; min-width: -webkit-fill-available; border-radius: 6px; padding: 1%; padding-bottom: 2%; padding-top: 2%;">Save & Continue</button>
+            <p id="responseMsg" style="font-size: 12px; margin-top: 69px; padding: 0px 25px; text-align: center;">By proceeding, you are agree to Soupx's <a target="_blank" href="/privacy-policy">Privacy Policy</a> and <a href="/terms-and-conditions" target="_blank">Terms & Conditions</a>.</p>
+        </form>
+        </div>
+        <!-- <div id="step_2" style="display: none;">
+            <div class="form-group">
+                <input type="hidden" id="leadId">
+                <label for="otp" style="font-size: 20px;">OTP</label>
+                <input type="number" maxlength="4" class="form-control" id="otp" placeholder="Enter 4 digit otp">
+            </div> 
+            <button id="skip" class="btn btn-danger" style="font-size: 18px; border: none; color: #645353; float: right; min-width: 22%; border-radius: 6px; padding: 1%; padding-bottom: 1%; padding-top: 1%;">Skip</button>
+            <button id="verify-lead" class="btn btn-primary" style="font-size: 18px; border: none; background-color: #4caf50; color: white; float: right; min-width: 22%; margin-right:2%; border-radius: 6px; padding: 1%; padding-bottom: 1%; padding-top: 1%;">Verify</button>
+      
+        </div> -->
+    </div>
+</div>
+
+
+
+<script>
+    function onlyNumberKey(evt) {
+          
+        // Only ASCII character in that range allowed
+        var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+        if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+            return false;
+        return true;
+    }
+</script>
+
+
+<!-- <script>
+    $('#save-lead').on('click', saveLead);
+    function saveLead(){
+    let phone = $('#phone').val();
+    if(phone == ''){
+        alert('Please enter a phone number to continue.');
+        return;
+    }
+    if(phone.length<10){
+        alert('Please enter a valid phone number.');
+        return;
+    }
+    console.log(phone);
+    let data = {
+            phone: phone
+    }
+}
+</script> -->
+
+
+<% include partials/footer %> 

@@ -22,21 +22,25 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-// var mysql = require('mysql');
+var mysql = require('mysql');
+const { use } = require('express/lib/application');
    
-// var con = mysql.createConnection({
-//   host: "localhost",
-//   port: 8889,
-//   user: "root",
-//   password: "root",
-//   database: "soupx_db",
+var con = mysql.createConnection({
+  host: "soupx-db.cfnfjggw1jc7.ap-south-1.rds.amazonaws.com",
+  port: 3306,
+  user: "admin",
+  password: "adminSoupX",
+  database: "SoupX_db",
 //   socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock"
-// //   insecureAuth : true
-// });
-// con.connect(function(err) {
-//   if (err) throw err;
-//   console.log("Connected!");
-// });
+//   insecureAuth : true
+});
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+  con.query('CREATE TABLE IF NOT EXISTS leads(id int NOT NULL AUTO_INCREMENT, phone varchar(30), PRIMARY KEY(id));', function(error, result, fields) {
+    console.log(result);
+  });
+});
 
 
 
@@ -66,19 +70,49 @@ app.get('/db', function(req, res) {
 
 });
 
-app.post('/db', function(req, res) {
-    console.log(typeof (parseInt(req.body.ID)));
-    console.log(typeof (req.body.name.toString()));
-    var ID = parseInt(req.body.ID);
-    var name = req.body.name.toString();
-    con.query(`INSERT INTO Tests  VALUES (${ID},"${name}") `, function (error, results, fields) {
-        if (error) throw error;
-        // console.log('The solution is: ', results[0].ID);
-      });
-      res.send("OK");
 
-
+app.post('/leads', (req, res) => {
+    const phone  = req.body.phone;
+    console.log(phone);
+    con.query(`INSERT INTO leads (phone) VALUES ("${phone}")`, function(err, result, fields) {
+        if (err) throw err 
+        // res.send('User saved successfully!')
+        res.redirect("https://explore.soupx.in/")
+    })
 });
+
+app.delete('/leads', (req, res)=>{
+    con.connect(function(err){
+        con.query(`DELETE FROM leads`, function(err, result, fields){
+            if (err) throw err 
+        })
+    })
+})
+
+app.get('/leads', (req, res) => {
+    con.connect(function(err) {
+        con.query(`SELECT * FROM leads`, function(err, result, fields) {
+            if (err) res.send(err);
+            if (result) res.send(result);
+
+        });
+    });
+});
+
+
+// app.post('/db', function(req, res) {
+//     console.log(typeof (parseInt(req.body.ID)));
+//     console.log(typeof (req.body.name.toString()));
+//     var ID = parseInt(req.body.ID);
+//     var name = req.body.name.toString();
+//     con.query(`INSERT INTO Tests  VALUES (${ID},"${name}") `, function (error, results, fields) {
+//         if (error) throw error;
+//         // console.log('The solution is: ', results[0].ID);
+//       });
+//       res.send("OK");
+
+
+// });
 
 app.post("/api/payment/order",(req,res)=>{
     var params=req.body;
@@ -102,6 +136,7 @@ app.post("/api/payment/verify",(req,res)=>{
     if(expectedSignature === req.body.razorpay_signature)
         response={"status":"success"}
         res.send(response);
+
     });    
     
 
@@ -132,14 +167,16 @@ app.get('/subscription', function (req, res) {
 
 app.get('/explore', function(request, response){
     
-    response.redirect("http://localhost:8888/explore/")
+    response.render(path.join(__dirname+'/soupx/explore.ejs'))
+    // response.redirect("http://localhost:8888/explore/")
+
 });
 
 app.get('/faq', function(request, response){    
   
-    response.render(path.join(__dirname+'/soupx/faq'), {user: db.signInUser});    
+    response.render(path.join(__dirname+'/soupx/faq'))    
    
-}, function(err){});
+});
 
 
 app.get('/about-us', function(request, response){    
@@ -149,28 +186,20 @@ app.get('/about-us', function(request, response){
 }, function(err){});
 
 app.get('/privacy-policy', function(request, response){ 
-    auth.checkToken(request, response, function(){
-        response.render(path.join(__dirname+'/soupx/privacy-policy'), {user: db.signInUser});    
-    }, function(err){
-        response.render(path.join(__dirname+'/soupx/privacy-policy'), {user: {}});    
-    });   
-}, function(err){});
+
+    response.render(path.join(__dirname+'/soupx/privacy-policy'))  
+});
 
 app.get('/refund-policy', function(request, response){ 
-    auth.checkToken(request, response, function(){
-        response.render(path.join(__dirname+'/soupx/refund-policy'), {user: db.signInUser});    
-    }, function(err){
-        response.render(path.join(__dirname+'/soupx/refund-policy'), {user: {}});    
-    });   
-}, function(err){});
+
+    response.render(path.join(__dirname+'/soupx/refund-policy'))  
+});
 
 app.get('/terms-and-conditions', function(request, response){ 
-    auth.checkToken(request, response, function(){
-        response.render(path.join(__dirname+'/soupx/terms-and-conditions'), {user: db.signInUser});    
-    }, function(err){
-        response.render(path.join(__dirname+'/soupx/terms-and-conditions'), {user: {}});    
-    });   
-}, function(err){});
+
+    response.render(path.join(__dirname+'/soupx/terms-and-conditions'))
+});  
+
 
 
 
