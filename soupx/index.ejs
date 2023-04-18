@@ -9,8 +9,8 @@
 					<h1>SoupX - Sip of Health</h1>
 				<p>Soup-based meals 
 					<span class="element" style="font-weight: 500"></span>
-					<span class="element" style="font-weight: 500">with no added preservatives</span>
-					<span class="typed-cursor typed-cursor--blink">|</span>
+					<span class="auto-type" style="font-weight: 500" ></span>
+					<span class="typed-cursor typed-cursor--blink"></span>
 					<!-- .typed-cursor.typed-cursor--blink {
 						animation: typedjsBlink 0.7s infinite;
 						-webkit-animation: typedjsBlink 0.7s infinite;
@@ -469,7 +469,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="shape_element_2">
+		<!-- <div class="shape_element_2">
 			<div class="container margin_60_0">
 				<div class="row">
 					<div class="col-lg-6">
@@ -496,36 +496,24 @@
 						</div>
 						<!-- <p class="text-center mt-3 d-block d-lg-none"><a href="#0" class="btn_1 medium gradient pulse_bt mt-2">Register Now!</a></p> -->
 					</div>
-					<!-- <div class="col-lg-5 offset-lg-1 ">
-						<div class="intro_txt">
-							<div class="main_title">
-								<span><em></em></span>
-								<h2>About SoupX</h2>
-							</div>
-							<p> India’s 1st Healthy Soup Based Meal Brand, Offering 99 + varieties of soups, Freshly prepared Soups curated by renowned Chefs and Nutritionists.</p>
-							
-							<p><a href="https://thrivenow.in/soupx-sip-of-health-all-outlets/select-outlet/delivery" class="btn_1 medium gradient pulse_bt mt-2">Order Online</a></p>
-						</div>
-					</div> -->
+					
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- /shape_element_2 -->
 	</div>
 </div>
-	<!-- /row -->
-	<!-- <div class="call_section lazy" data-bg="url(img/BANNERsoupx2.png)">
-		<div class="container clearfix">
-			<div class="col-lg-5 col-md-6 float-right wow">
-				<div class="box_1">
-					<h3>Get started with the soupx mobile app!</h3>
-					<p>Order your favorite cuisine& track on the go, with the all-new soupx app.</p>
-					<a href="#"><img src="/img/googleplay.png" alt="" style="width: 50%;"></a><a href="#"><img src="/img/appstore.png" alt="" style="width: 43%; margin-left: 5%;"></a>							
-				</div>
-			</div>
-		</div>
-	</div> -->
-	   <!--/call_section-->
+	
 </main>
+
+<script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
+<script>
+	var typed = new Typed(".auto-type", {
+		strings: ["with no added preservatives"],
+		typeSpeed: 75,
+		backSpeed: 75,
+		loop: true
+	})
+</script>
 
  <% include partials/footer %> 

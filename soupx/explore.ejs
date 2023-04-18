@@ -17,25 +17,32 @@
         <div id="step_1">
             <h4 class="card-text" style="text-align: center;">Please enter your details to continue</h4>
           <div class="form-group">
-            <form action="/leads" method="POST">
+            <form >
                 <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your phone number (without country code)" onkeypress="return onlyNumberKey(event)" maxlength="11"  required/>
-       
-          </div>
-     
-            <button id="save-lead" class="btn btn-primary" style="font-size: 21px; border: none; background-color: #4caf50; color: white; float: right; min-width: -webkit-fill-available; border-radius: 6px; padding: 1%; padding-bottom: 2%; padding-top: 2%;">Save & Continue</button>
+                
+                <button id="save-lead" class="btn btn-primary" style="font-size: 21px; border: none; background-color: #4caf50; color: white; float: right; min-width: -webkit-fill-available; border-radius: 6px; margin-top: 10px; padding: 1%; padding-bottom: 2%; padding-top: 2%;" onclick="save_lead();return false;">Save & Continue</button>
             <p id="responseMsg" style="font-size: 12px; margin-top: 69px; padding: 0px 25px; text-align: center;">By proceeding, you are agree to Soupx's <a target="_blank" href="/privacy-policy">Privacy Policy</a> and <a href="/terms-and-conditions" target="_blank">Terms & Conditions</a>.</p>
+          </div>
         </form>
+
         </div>
-        <!-- <div id="step_2" style="display: none;">
+        <div id="step_2" style="display: none;">
+            <h4 class="card-text" style="text-align: center;">Please enter the OTP to continue</h4>
             <div class="form-group">
                 <input type="hidden" id="leadId">
-                <label for="otp" style="font-size: 20px;">OTP</label>
-                <input type="number" maxlength="4" class="form-control" id="otp" placeholder="Enter 4 digit otp">
+                <input type="text" maxlength="4" class="form-control" id="otp" placeholder="Enter the 4 digit one time password" onkeypress="return onlyNumberKey(event)">
             </div> 
-            <button id="skip" class="btn btn-danger" style="font-size: 18px; border: none; color: #645353; float: right; min-width: 22%; border-radius: 6px; padding: 1%; padding-bottom: 1%; padding-top: 1%;">Skip</button>
-            <button id="verify-lead" class="btn btn-primary" style="font-size: 18px; border: none; background-color: #4caf50; color: white; float: right; min-width: 22%; margin-right:2%; border-radius: 6px; padding: 1%; padding-bottom: 1%; padding-top: 1%;">Verify</button>
+            <!-- <a href="https:explore.soupx.in" > -->
+                <button id="skip" class="btn btn-danger" style="font-size: 18px; border: none; color: #645353; float: left; min-width: 22%; margin-right:2%; border-radius: 6px; padding: 1%; padding-bottom: 1%; padding-top: 1%;" onclick="redirect_explore(); return false;">Skip</button>
+            <!-- </a> -->
+            
+            <!-- style="font-size: 18px; border: none; color: #645353; float: left; min-width: 22%; border-radius: 6px; padding: 2%; padding-bottom: 2%; padding-top: 2%;" -->
+            
+            
+            <button id="verify-lead" class="btn btn-primary" style="font-size: 18px; border: none; background-color: #4caf50; color: white; float: right; min-width: 22%; margin-right:2%; border-radius: 6px; padding: 1%; padding-bottom: 1%; padding-top: 1%;" onclick="verify_lead(); return false;">Verify</button>
+            
       
-        </div> -->
+        </div>
     </div>
 </div>
 
@@ -52,25 +59,75 @@
     }
 </script>
 
+<script>
+   
+    function save_lead(event){
+    
+        var phone = document.getElementById("phone").value;
+        // console.log(phone);
 
-<!-- <script>
-    $('#save-lead').on('click', saveLead);
-    function saveLead(){
-    let phone = $('#phone').val();
-    if(phone == ''){
-        alert('Please enter a phone number to continue.');
-        return;
+        if(phone == ''){
+            alert('Please enter a phone number to continue.');
+            return;
+        }
+        if(phone.length<10){
+            alert('Please enter a valid phone number.');
+            
+            return;
+        }
+        
+        var data = {phone:phone, name:"sajal"}
+
+        const response = fetch("/leads", {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+        // document.getElementById("phone").value = phone;
+        document.getElementById("step_2").style.display = "block";
+        document.getElementById("step_1").style.display = "none";
+        
     }
-    if(phone.length<10){
-        alert('Please enter a valid phone number.');
-        return;
+
+    function verify_lead(){
+        var phone = document.getElementById("phone").value;
+        var otp = document.getElementById("otp").value;
+
+        if(otp == ''){
+            alert('Please enter one time password to continue.');
+            return;
+        }
+        if(otp.length<4){
+            alert('Please enter a valid one time password.');
+            return;
+        }
+        
+        var data = {phone:phone, otp:otp}
+
+           const response = fetch("/verify_lead", {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            document.getElementById("verify-lead").style.display = "none";
+            var elem = document.getElementById("skip");
+            elem.innerHTML = 'Next';
+            elem.style.background = '#4caf50' ;
+            elem.style.color = 'white';
+            elem.style.float = 'right';
+
+        
     }
-    console.log(phone);
-    let data = {
-            phone: phone
+
+    function redirect_explore(){
+        window.location.replace("https:explore.soupx.in");
     }
-}
-</script> -->
+</script>
 
 
 <% include partials/footer %> 

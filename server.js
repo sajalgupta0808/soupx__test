@@ -3,6 +3,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+const axios = require('axios');
 
 var cors = require('cors');
 var path = require('path');
@@ -26,30 +27,22 @@ var mysql = require('mysql');
 const { use } = require('express/lib/application');
    
 var con = mysql.createConnection({
-  host: "soupx-db.cfnfjggw1jc7.ap-south-1.rds.amazonaws.com",
+  host: "soupx-db.ct4awx1ga5he.eu-north-1.rds.amazonaws.com",
   port: 3306,
   user: "admin",
-  password: "adminSoupX",
+  password: "SoupXadmin",
   database: "SoupX_db",
-//   socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock"
-//   insecureAuth : true
 });
 con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
-  con.query('CREATE TABLE IF NOT EXISTS leads(id int NOT NULL AUTO_INCREMENT, phone varchar(30), PRIMARY KEY(id));', function(error, result, fields) {
-    console.log(result);
+  con.query('CREATE TABLE IF NOT EXISTS explore_leads(id int NOT NULL AUTO_INCREMENT, phone varchar(30), verification varchar(10), PRIMARY KEY(id));', function(error, result, fields) {
+    // console.log(result);
   });
 });
 
-
-
-
-
 app.set('view engine', 'ejs');
 
-
-// app.use("/media", express.static(__dirname + '/media'));
 app.use("/soupx", express.static(__dirname + '/soupx'));
 app.use("/css", express.static(__dirname + '/soupx/css'));
 app.use("/img", express.static(__dirname + '/soupx/img'));
@@ -60,38 +53,90 @@ app.use("/assets", express.static(__dirname + '/soupx/assets'));
 app.use("/video", express.static(__dirname + '/soupx/video'));
 app.use("/sitemap.xml", express.static(__dirname + '/sitemap.xml'));
 
-app.get('/db', function(req, res) {
-    con.query('SELECT * FROM Tests', function (error, results, fields) {
-        if (error) throw error;
-        console.log('The solution is: ', results);
-      });
-      res.send("OK");
 
-
-});
-
-
-app.post('/leads', (req, res) => {
+//CREATE EXPLORE LEAD API
+app.post('/leads', async (req, res) => {
     const phone  = req.body.phone;
     console.log(phone);
-    con.query(`INSERT INTO leads (phone) VALUES ("${phone}")`, function(err, result, fields) {
+    await con.query(`INSERT INTO explore_leads (phone, verification) VALUES ("${phone}", "No")`, function(err, result, fields) {
         if (err) throw err 
+        const options = {
+            method: 'POST',
+            url: `https://control.msg91.com/api/v5/otp?template_id=626695641042174181129b03&mobile=91${phone}`,
+            headers: {
+              accept: 'application/json',
+              'content-type': 'application/json',
+              authkey: '372124AHzypLn4SL961e928fcP1'
+            },
+            data: {Param1: 'value1', Param2: 'value2', Param3: 'value3'}
+          };
+          
+          axios
+            .request(options)
+            .then(function (response) {
+            //   console.log(response.data);
+            })
+            .catch(function (error) {
+              console.error(error);
+            });
         // res.send('User saved successfully!')
-        res.redirect("https://explore.soupx.in/")
+        // res.redirect("https://explore.soupx.in/")
+
     })
 });
 
-app.delete('/leads', (req, res)=>{
+//VERIFY EXPLORE LEAD API
+app.post('/verify_lead',  (req, res)=>{
+    const phone = req.body.phone;
+    const otp = req.body.otp;
+    const options = {
+        method: 'GET',
+        url: `https://control.msg91.com/api/v5/otp/verify?otp=${otp}&mobile=91${phone}`,
+        headers: {accept: 'application/json', authkey: '372124AHzypLn4SL961e928fcP1'}
+      };
+
+       axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+        if(response.data.type=="success"){
+            con.query(`UPDATE explore_leads SET verification="Yes" where phone = "${phone}" `);
+
+            // axios.get('https://explore.soupx.in/').then(function(response) {
+            // //    res.redirect( response.request.res.responseUrl); 
+            //     console.log(response.request.res.responseUrl);
+            //     // console.log(ans.status);
+             
+            //    }).catch(function(no200){
+            //     console.error("404, 400, and other events");
+               
+            //   });
+        }
+        else{
+            // res.send(response.data);
+        }
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  
+
+})
+
+//DELETE EXPLORE LEAD
+app.delete('/delete_leads', (req, res)=>{
     con.connect(function(err){
-        con.query(`DELETE FROM leads`, function(err, result, fields){
+        con.query(`DELETE FROM explore_leads`, function(err, result, fields){
             if (err) throw err 
+            res.send('Deleted Successfully!')
         })
     })
 })
 
-app.get('/leads', (req, res) => {
+//GET EXPLORE LEADS
+app.get('/get_leads', (req, res) => {
     con.connect(function(err) {
-        con.query(`SELECT * FROM leads`, function(err, result, fields) {
+        con.query(`SELECT * FROM explore_leads`, function(err, result, fields) {
             if (err) res.send(err);
             if (result) res.send(result);
 
@@ -99,21 +144,7 @@ app.get('/leads', (req, res) => {
     });
 });
 
-
-// app.post('/db', function(req, res) {
-//     console.log(typeof (parseInt(req.body.ID)));
-//     console.log(typeof (req.body.name.toString()));
-//     var ID = parseInt(req.body.ID);
-//     var name = req.body.name.toString();
-//     con.query(`INSERT INTO Tests  VALUES (${ID},"${name}") `, function (error, results, fields) {
-//         if (error) throw error;
-//         // console.log('The solution is: ', results[0].ID);
-//       });
-//       res.send("OK");
-
-
-// });
-
+//CREATE RAZORPAY ORDER
 app.post("/api/payment/order",(req,res)=>{
     var params=req.body;
     instance.orders.create(params).then((data) => {
@@ -123,7 +154,7 @@ app.post("/api/payment/order",(req,res)=>{
     })
     });
 
-
+//VERIFY PAYMENT
 app.post("/api/payment/verify",(req,res)=>{
     var body=req.body.razorpay_order_id + "|" + req.body.razorpay_payment_id;
     var crypto = require("crypto");
@@ -138,71 +169,67 @@ app.post("/api/payment/verify",(req,res)=>{
         res.send(response);
 
     });    
-    
 
-
-
-
-
-
-
+//REDIRECT TO HOMEPAGE
 app.get('/', function (req, res) {
      
     res.render(path.join(__dirname+'/soupx/index.ejs'))
     
 });
 
+//REDIRECT TO PAYMENT PAGE
 app.get('/payment', function (req, res) {
      
     res.render(path.join(__dirname+'/soupx/razorpay.ejs'))
     
 });
 
+//REDIRECT TO SUBSCRIPTION PAGE
 app.get('/subscription', function (req, res) {
      
-    // res.render(path.join(__dirname+'/soupx/subscription.ejs'))
-    response.redirect("https://subscription.soupx.in/")
+    res.render(path.join(__dirname+'/soupx/subscription.ejs'))
+    // response.redirect("https://subscription.soupx.in/")
     
 });
 
+//REDIRECT TO EXPLORE PAGE
 app.get('/explore', function(request, response){
     
     response.render(path.join(__dirname+'/soupx/explore.ejs'))
-    // response.redirect("http://localhost:8888/explore/")
-
+   
 });
 
+//REDIRECT TO FAQ PAGE
 app.get('/faq', function(request, response){    
   
     response.render(path.join(__dirname+'/soupx/faq'))    
    
 });
 
-
+//REDIRECT TO ABOUT US PAGE
 app.get('/about-us', function(request, response){    
     
     response.render(path.join(__dirname+'/soupx/about'))     
    
 }, function(err){});
 
+//REDIRECT TO PRIVACY POLICY PAGE
 app.get('/privacy-policy', function(request, response){ 
 
     response.render(path.join(__dirname+'/soupx/privacy-policy'))  
 });
 
+//REDIRECT TO REFUND POLICY PAGE
 app.get('/refund-policy', function(request, response){ 
 
     response.render(path.join(__dirname+'/soupx/refund-policy'))  
 });
 
+//REDIRECT TO TnC PAGE
 app.get('/terms-and-conditions', function(request, response){ 
 
     response.render(path.join(__dirname+'/soupx/terms-and-conditions'))
 });  
-
-
-
-
 
 // Start the server
 app.listen(port);
