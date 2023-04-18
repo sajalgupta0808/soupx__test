@@ -123,6 +123,16 @@ app.post('/verify_lead',  (req, res)=>{
 
 })
 
+
+app.get('/explore_menu', async function (req, res) {
+     
+    // res.render(path.join(__dirname+'/soupx/subscription.ejs'))
+    await res.redirect("https://explore.soupx.in/");
+    
+});
+
+
+
 //DELETE EXPLORE LEAD
 app.delete('/delete_leads', (req, res)=>{
     con.connect(function(err){
